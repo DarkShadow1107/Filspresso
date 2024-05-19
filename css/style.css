@@ -1,0 +1,404 @@
+body {
+	background-color: #000000;
+}
+header {
+	margin: -8px 0 0 0;
+	width: 100%;
+}
+::-webkit-scrollbar {
+	width: 15px;
+}
+::-webkit-scrollbar-track {
+	background: rgba(177, 177, 177, 0);
+}
+::-webkit-scrollbar-corner {
+	background: rgba(177, 177, 177, 0);
+}
+::-webkit-scrollbar-thumb {
+	background-image: linear-gradient(#19161a, #2f2e2f);
+}
+::-webkit-scrollbar-thumb:hover {
+	background-image: linear-gradient(120deg, #2f2e2f, #19161a);
+}
+.img_test {
+	transform: translateY(5%);
+}
+.header_body {
+	position: fixed;
+	width: 100%;
+	z-index: 8;
+}
+.glass_morph {
+	background-color: rgba(0, 0, 0, 0.65);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	overflow: hidden;
+	z-index: 5;
+	width: auto;
+	height: 12vh;
+	backdrop-filter: blur(10px);
+	box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+nav {
+	background-color: transparent;
+	font-size: 14px;
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	color: rgba(200, 198, 198, 0.773);
+	transform: translateX(-5%);
+	letter-spacing: 1.2px;
+}
+nav ul {
+	list-style-type: none;
+	align-items: center;
+	display: flex;
+	padding: 0;
+}
+nav ul li {
+	float: right;
+	width: auto;
+	/*transform: translateX(-25%);*/
+	padding-top: 1.5%;
+}
+nav ul li a {
+	text-align: center;
+	display: block;
+	padding: 6px 12px 6px 12px;
+	border-radius: 13px;
+	text-decoration: none;
+}
+nav ul li a:hover {
+	background-color: rgb(190, 172, 154);
+	color: rgb(29, 25, 25);
+	transition: 500ms;
+	box-shadow: /*0 0 10px 2px rgb(190, 172, 154),*/ 0 68px 45px 27px rgb(174, 137, 102);
+}
+nav ul li a:not(hover) {
+	transition: 500ms;
+}
+nav ul li a i {
+	font-size: 20px;
+}
+.left {
+	flex: 1;
+	float: left;
+}
+.right {
+	float: right;
+}
+.logo img {
+	width: 17vw;
+	transform: translateX(21%);
+	padding-top: 0.9%;
+}
+.coffee_pres img {
+	margin-top: 12vh;
+	width: 100%;
+}
+.bag_pres img {
+	margin-top: 12vh;
+	margin-left: 25%;
+	margin-right: 25%;
+	width: 50%;
+}
+.nav_coffee_type,
+.nav_machine_type {
+	width: 70%;
+	transform: translateX(20%);
+}
+.coffee_type,
+.machine_type {
+	display: flex;
+	justify-content: center;
+}
+.original,
+.vertuo {
+	margin-left: 2.2%;
+}
+h2 {
+	color: rgb(190, 172, 154);
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	letter-spacing: 1.2px;
+}
+h3, h4 {
+	color: rgb(246, 198, 173);
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	letter-spacing: 1px;
+}
+.h3_home {
+	margin-left: 2%;
+	margin-right: 2%;
+}
+.h3_capsule {
+	text-align: center !important;
+	color: rgb(253, 224, 208) !important;
+	letter-spacing: 1.4px !important;
+}
+.coffee_groups,
+.machine_groups {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-top: 3%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+.coffee_groups_head,
+.machine_groups_head,
+.machine_groups_head_2 {
+	background-color: rgba(138, 109, 81, 0.464);
+	box-shadow: 0 0 10px 5px rgba(33, 29, 24, 0.918);
+	margin-right: 1%;
+	margin-bottom: 1%;
+	border-radius: 20px;
+	text-align: center;
+	justify-content: center !important;
+}
+.coffee_groups_capsules,
+.machine_groups_models,
+.machine_groups_models_2 {
+	background-color: rgba(224, 169, 137, 0.433);
+	box-shadow: 0 0 9px 4px rgba(52, 44, 38, 0.91);
+	border-radius: 20px;
+	margin-right: 1%;
+	margin-bottom: 1%;
+	justify-content: center;
+}
+.coffee_groups_head,
+.coffee_groups_capsules {
+	width: 270px;
+	height: 550px;
+}
+.machine_groups_head,
+.machine_groups_models {
+	width: 320px;
+	height: 700px;
+}
+.machine_groups_head_2,
+.machine_groups_models_2 {
+	width: 320px;
+	height: 600px;
+}
+.capsule_box {
+	width: 243px;
+	margin-left: 13.5px;
+	margin-right: 13.5px;
+	margin-top: 13.5px;
+	border-radius: 15px;
+	background-color: rgba(200, 151, 123, 0.153);
+	align-items: center;
+	height: 150px;
+}
+.machine_box, .machine_box_2 {
+	width: 293px;
+	margin-left: 13.5px;
+	margin-right: 13.5px;
+	margin-top: 13.5px;
+	border-radius: 15px;
+	background-color: rgba(200, 151, 123, 0.153);
+	align-items: center;
+	height: 200px;
+}
+.capsule_box img {
+	width: 70%;
+	margin-left: 15%;
+	margin-top: -5%;
+	margin-right: 15%;
+}
+.machine_box img {
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 0;
+	margin-right: 15%;
+}
+.machine_box_2 img {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 4%;
+	margin-right: 20%;
+}
+.content_coffee_head {
+	margin-top: 53%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.text_dimmer {
+	font-size: 15px;
+	font-weight: 700;
+	color: rgba(186, 144, 121, 0.793);
+	letter-spacing: 1.2px;
+	line-height: 1.5;
+	font-family: "NespressoLucas", "Trebuchet MS", "Open Sans", Helvetica, Arial, sans-serif !important;
+}
+.text_head {
+	font-size: 16px;
+	font-weight: 200;
+	letter-spacing: 1px;
+	color: rgb(236, 201, 182);
+	line-height: 1.2;
+	font-family: "Abadi MT Std Extra Light It";
+}
+.text_capsule,
+.text_capsule_2 {
+	font-size: 16px;
+	font-weight: 200;
+	text-align: center;
+	letter-spacing: 1px;
+	margin-left: 10%;
+	margin-right: 10%;
+	letter-spacing: 1.2px;
+	color: rgb(248, 220, 204);
+	line-height: 1.2;
+	font-family: "Abadi MT Std Extra Light It";
+}
+.text_capsule_2 {
+	opacity: 0.85;
+}
+.box_coffee_made {
+	display: flex;
+	margin-top: 2%;
+	align-items: center;
+	text-align: center;
+	margin-left: 20px;
+}
+.box_coffee_type {
+	user-select: none;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	width: 100px;
+	margin-left: 10px;
+	height: 30px;
+	background-color: rgba(200, 151, 123, 0.153);
+	border-radius: 30px;
+}
+.box_coffee_type svg {
+	margin-left: 10%;
+}
+.text_coffee_made {
+	font-size: 12px;
+	font-weight: 300;
+	color: rgb(248, 220, 204);
+	letter-spacing: 1.2px;
+	font-family: "NespressoLucas", "Trebuchet MS", "Open Sans", Helvetica, Arial, sans-serif !important;
+}
+.intensity {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin-top: 5%;
+	margin-left: 20%;
+}
+.text_intensity {
+	font-size: 13px;
+	color: rgb(254, 203, 137);
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	letter-spacing: 1px;
+	margin-right: 2%;
+	margin-left: 2%;
+}
+.bar {
+	width: 3px;
+	height: 10px;
+	margin-left: 2px;
+	background-color: rgba(248, 220, 204, 0.332);
+}
+.filled {
+	background-color: rgb(254, 203, 137) !important;
+}
+.bag_group {
+	transform: translateY(50%); /*2 small lines, 1 big line*/
+}
+.bag_group_2 {
+	transform: translateY(35%); /*3 small lines, 1 big line*/
+}
+.bag_group_3 {
+	transform: translateY(5%); /*3 small lines, 2 big lines*/
+}
+.bag_group_4,
+.bag_group_6 {
+	transform: translateY(20%); /*4 small lines, 1 big line || 2 small lines, 2 big lines*/
+}
+.bag_group_5, .bag_group_11 {
+	transform: translateY(65%); /*1 small line, 1 big line*/
+}
+.bag_group_7 {
+	transform: translateY(125%);
+}
+.bag_group_8 {
+	transform: translateY(95%);
+}
+.bag_group_9 {
+	transform: translateY(80%);
+}
+.bag_group_10 {
+	transform: translateY(47%);
+}
+.price {
+	font-size: 24px;
+	font-weight: 700;
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	color: rgb(251, 185, 92);
+	align-items: center;
+	text-align: center;
+}
+.price_per_capsule,
+.price_per_capsule_1 {
+	font-size: 14px;
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	color: rgba(254, 197, 116, 0.868);
+	align-items: center;
+	text-align: center;
+	margin-top: 0.7%;
+}
+.button_add_bag {
+	width: 140px;
+	height: 32px;
+	font-size: 21px;
+	border-radius: 30px;
+	align-items: baseline;
+	text-align: center;
+	color: rgb(250, 204, 144);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4%;
+	background-color: rgba(200, 151, 123, 0.233);
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.button_add_bag_2 {
+	width: 171px;
+	height: 39px;
+	font-size: 25.5px;
+	border-radius: 30px;
+	align-items: baseline;
+	text-align: center;
+	color: rgb(250, 204, 144);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4%;
+	background-color: rgba(200, 151, 123, 0.233);
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.no_space, .unselect {
+	line-height: 0;
+	margin: 0;
+	padding: 0;
+	color: transparent;
+	user-select: none;
+}
+.unselect {
+	height: 750px;
+}
+.clear {
+	clear: both;
+}
+.itemListBag {
+	font-size: 19px;
+	margin-left: 2%;
+	font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	color: rgb(250, 204, 144);
+}
+.itemListBag li {
+	list-style-type: decimal;
+}
