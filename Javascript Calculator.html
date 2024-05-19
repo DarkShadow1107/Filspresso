@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/png" href="images/Logo_filspresso.png" />
+		<title>Filspresso - Calculator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://db.onlinewebfonts.com/c/51a69624ea6dd3b2f3e808c39d367a95?family=Abadi+MT+Std+Extra+Light+It"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="Designs/Javascript Calculator/css/style.css" />
+	</head>
+	<body>
+		<header>
+			<div class="header_body_calc">
+				<div class="glass_morph_calc">
+					<div class="left">
+						<div class="logo_calc">
+							<a href="index.html"> <img src="images/Logo_filspresso_web.png" /></a>
+						</div>
+					</div>
+					<div class="right">
+						<nav>
+							<ul>
+								<li>
+									<a href="index.html">About</a>
+								</li>
+								<li>
+									<a href="love_coffee.html">Coffee Types</a>
+								</li>
+								<li>
+									<a href="coffee.html">Coffee</a>
+								</li>
+								<li>
+									<a href="machines.html">Machines</a>
+								</li>
+								<li>
+									<a href="subscription.html">Subscription</a>
+								</li>
+								<li>
+									<a href="Javascript Calculator.html">Shop Calculator</a>
+								</li>
+								<li>
+									<a href="account.html">
+										<i class="fa fa-user-circle"></i>
+										Account
+									</a>
+								</li>
+								<li>
+									<a href="shopping_bag.html">
+										<i class="fa fa-shopping-bag"></i>
+										Bag
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		<h1>Shop Calculator</h1>
+		<p class="warning">Don't divide by zero</p>
+
+		<div id="calculator" class="calculator">
+			<button id="clear" class="clear">C</button>
+
+			<div id="viewer" class="viewer">0</div>
+
+			<button class="num" data-num="7">7</button>
+			<button class="num" data-num="8">8</button>
+			<button class="num" data-num="9">9</button>
+			<button data-ops="plus" class="ops">+</button>
+
+			<button class="num" data-num="4">4</button>
+			<button class="num" data-num="5">5</button>
+			<button class="num" data-num="6">6</button>
+			<button data-ops="minus" class="ops">-</button>
+
+			<button class="num" data-num="1">1</button>
+			<button class="num" data-num="2">2</button>
+			<button class="num" data-num="3">3</button>
+			<button data-ops="times" class="ops">*</button>
+
+			<button class="num" data-num="0">0</button>
+			<button class="num" data-num=".">.</button>
+			<button id="equals" class="equals" data-result="">=</button>
+			<button data-ops="divided by" class="ops">/</button>
+		</div>
+
+		<a id="reset" class="reset" href="Javascript Calculator.html" target="_top">Reset Work?</a>
+		<script src="Designs/Javascript Calculator/js/script.js"></script>
+	</body>
+</html>
