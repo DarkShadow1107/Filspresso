@@ -149,6 +149,5 @@ ul {
 .header_body_sub {
 	position: sticky;
 	width: 100%;
-	margin-top: -0.6%;
 	z-index: 8;
 }
