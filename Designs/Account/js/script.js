@@ -31,8 +31,10 @@ function Submit() {
 					localStorage.setItem("passValue", Password.toString());
 					localStorage.setItem("nameValue", Nickname.toString());
 					localStorage.setItem("mailValue", E_mail.toString());
+					let forgot = false;
+					localStorage.setItem("forgotValue", forgot.toString());
 					alert("Welcome " + Nickname + ", your e-mail address was registered with the following address " + E_mail);
-					window.location.replace("../../../index.html");
+					window.location.replace("./index.html");
 				}
 			else alert("Please insert a strong password!");
 		else alert("Invalid e-mail address or empty username, please insert a valid e-mail address and an username!");
@@ -47,10 +49,31 @@ function Submit_log() {
 	let passValue = localStorage.getItem("passValue");
 	let mailValue = localStorage.getItem("mailValue");
 	let nameValue = localStorage.getItem("nameValue");
-	if (mailValue != E_mail || passValue != Password) {
-		alert("Your e-mail address or password is incorrect!");
-		window.location.replace("../../../index.html");
-	}
-	else
-		alert("Welcome back " + nameValue + ", here at the Filspresso!");
+	let forgotValue = localStorage.getItem("forgotValue");
+	if (forgotValue === "false")
+		if (mailValue != E_mail || passValue != Password) {
+			alert("Your e-mail address or password is incorrect!");
+		}
+		else {
+			alert("Welcome back " + nameValue + ", here at the Filspresso!");
+			window.location.replace("./index.html");
+		}
+	else if (Password !== "")
+			if (Password.length < 10) alert("Your password is too short, it must contains at least 10 characters!");
+			else if (containsSpecialChars_password(Password) === false)
+				alert("Your password is weak, it must contains special characters as well!");
+			else {
+				localStorage.setItem("passValue", Password.toString());
+				alert("Your password has been changed!");
+				alert("Welcome back " + nameValue + ", here at the Filspresso!");
+				localStorage.setItem("forgotValue", "false");
+				window.location.replace("./index.html");
+			}
+}
+function Forgot() {
+	let E_mail = document.getElementById("logemail").value;
+	let Password = document.getElementById("logpass").value;
+	localStorage.setItem("forgotValue", "true");
+	alert("We're sorry that you forgot yor password, you'll enter your e-mail address and the new password in the Log In form.");
+	Submit_log();
 }
