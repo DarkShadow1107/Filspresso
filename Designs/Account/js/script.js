@@ -34,7 +34,7 @@ function Submit() {
 					let forgot = false;
 					localStorage.setItem("forgotValue", forgot.toString());
 					alert("Welcome " + Nickname + ", your e-mail address was registered with the following address " + E_mail);
-					window.location.replace("./index.html");
+					window.location.href = './index.html';
 				}
 			else alert("Please insert a strong password!");
 		else alert("Invalid e-mail address or empty username, please insert a valid e-mail address and an username!");
@@ -56,7 +56,7 @@ function Submit_log() {
 		}
 		else {
 			alert("Welcome back " + nameValue + ", here at the Filspresso!");
-			window.location.replace("./index.html");
+			window.location.href = './index.html';
 		}
 	else if (Password !== "")
 			if (Password.length < 10) alert("Your password is too short, it must contains at least 10 characters!");
@@ -67,7 +67,7 @@ function Submit_log() {
 				alert("Your password has been changed!");
 				alert("Welcome back " + nameValue + ", here at the Filspresso!");
 				localStorage.setItem("forgotValue", "false");
-				window.location.replace("./index.html");
+				window.location.href = './index.html';
 			}
 }
 function Forgot() {
