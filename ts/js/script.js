@@ -175,6 +175,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+function isInFullScreen() {
+    return !document.fullscreenElement;
+}
+document.addEventListener('keydown', (event) => {
+    let navbar = document.getElementById('sub_navbar');
+    //Check if the F11 key was pressed
+    if (event.key === 'F11') {
+        if (isInFullScreen()) {
+            console.log("Page is in Full Screen Mode.");
+            navbar.style.marginTop = "-2.3%";
+            alert("Press F9 to go back!");
+        }
+    }
+    else {
+        console.log("Page is in Normal Mode.");
+        navbar.style.marginTop = "-0.3%";
+        location.reload();
+    }
+    if (event.key === "F9") {
+        navbar.style.marginTop = "-0.3%";
+        console.log("Page is in Normal Mode. F11 key pressed again.");
+    }
+});
 document.addEventListener("DOMContentLoaded", function () {
     // Identify the parent div where the result will be displayed
     let parentDiv = document.getElementById("total");
@@ -198,7 +221,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Update the stored sum in localStorage for future use
             localStorage.setItem("currentSum", newSum.toString());
         }
-        let displayedSum = parseFloat(localStorage.getItem("currentSum") || "0.0").toFixed(2).toString().concat(" RON").replace(".", ",");
+        let displayedSum = parseFloat(localStorage.getItem("currentSum") || "0.0")
+            .toFixed(2)
+            .toString()
+            .concat(" RON")
+            .replace(".", ",");
         // Create a new div to display the sum
         let resultDiv = document.createElement("div");
         resultDiv.id = "resultDiv";
@@ -287,8 +314,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         placeOrderButton.addEventListener("click", function () {
             // Code to execute on click (e.g., reset function)
-            alert("Your order worth " + displayedSum + " has been placed!");
-            reset();
+            if (displayedSum === "0,00 RON") {
+                alert("Your bag is empty. You'll need to buy something to place an order.");
+                window.location.href = './coffee.html';
+            }
+            else {
+                alert("Your order worth " + displayedSum + " has been placed!");
+                reset();
+            }
         });
         parentDiv_2.appendChild(placeOrderButton);
     }
