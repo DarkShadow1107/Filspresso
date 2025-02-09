@@ -16,7 +16,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin: 0;
-	font-family: Poppins;
 	background: #cebca6;
 }
 @media screen and (max-height: 500px) {
