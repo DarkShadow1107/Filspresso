@@ -76,6 +76,7 @@ button {
 	width: 2em;
 	height: 2em;
 	transition: all 0.5s;
+	border-radius: 15px;
 
 	&:hover {
 		background: #201e40;
@@ -131,6 +132,7 @@ button {
 	width: auto;
 	height: auto;
 	text-decoration: none;
+	border-radius: 20px;
 
 	&:hover {
 		background: #c97874;

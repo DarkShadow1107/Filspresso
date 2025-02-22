@@ -72,6 +72,7 @@ button {
   width: 2em;
   height: 2em;
   transition: all 0.5s;
+  border-radius: 15px;
 }
 button:hover {
   background: #201e40;
@@ -123,6 +124,7 @@ button:focus::after {
   width: auto;
   height: auto;
   text-decoration: none;
+  border-radius: 20px;
   /* When button is revealed */
 }
 .reset:hover {
