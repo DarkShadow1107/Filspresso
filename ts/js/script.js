@@ -319,8 +319,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = './coffee.html';
             }
             else {
-                alert("Your order worth " + displayedSum + " has been placed!");
-                reset();
+                alert("Your order worth " + displayedSum + " is processing!");
+                window.location.href = './payment.html';
             }
         });
         parentDiv_2.appendChild(placeOrderButton);
