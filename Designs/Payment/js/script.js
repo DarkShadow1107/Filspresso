@@ -168,6 +168,93 @@ function creditCard() {
 	};
 }
 
+function glassmorphicAlert(message, options = {}) {
+	const {
+		duration = 5000,
+		backgroundColor = "rgba(108, 68, 35, 0.86)",
+		textColor = "#fff8e1",
+		blurRadius = "10px",
+		borderRadius = "10px",
+		width = "300px",
+		padding = "20px",
+		boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)",
+		fontFamily = "sans-serif",
+		fontSize = "16px",
+	} = options;
+
+	const alertContainer = document.createElement("div");
+	alertContainer.style.position = "fixed";
+	alertContainer.style.zIndex = "9999";
+	alertContainer.style.top = "20px";
+	alertContainer.style.left = "50%";
+	alertContainer.style.transform = "translateX(-50%)";
+
+	const alertBox = document.createElement("div");
+	alertBox.style.backgroundColor = backgroundColor;
+	alertBox.style.backdropFilter = `blur(${blurRadius})`;
+	alertBox.style.webkitBackdropFilter = `blur(${blurRadius})`;
+	alertBox.style.color = textColor;
+	alertBox.style.borderRadius = borderRadius;
+	alertBox.style.width = width;
+	alertBox.style.padding = padding;
+	alertBox.style.boxShadow = boxShadow;
+	alertBox.style.fontFamily = fontFamily;
+	alertBox.style.fontSize = fontSize;
+	alertBox.style.textAlign = "center";
+	alertBox.innerHTML = message;
+
+	alertContainer.appendChild(alertBox);
+	document.body.appendChild(alertContainer);
+
+	setTimeout(() => {
+		alertContainer.remove();
+	}, duration);
+}
+
+function isUnsignedNumeric(value) {
+	for (let i = 0; i < value.length; i++) {
+		const charCode = value.charCodeAt(i);
+		if (charCode < 48 || charCode > 57) {
+			return false; // Not a digit (0-9)
+		}
+	}
+	return true;
+}
+
+function removeAllSpaces(str) {
+	return str.replace(/\s|&nbsp;/g, "");
+}
+
+async function sendPaymentConfirmationEmail() {
+	try {
+		const userEmail = localStorage.getItem("mailValue");
+		const userName = localStorage.getItem("nameValue");
+
+		if (!userEmail) {
+			console.error("User email not found.");
+			return;
+		}
+
+		const items = JSON.parse(localStorage.getItem("myItems")) || [];
+
+		emailjs.init("T-VQxrMdcr_OdDWSa");
+
+		await emailjs.send(
+			"service_c2nhc5y",
+			"template_z6i4fwr",
+			{
+				to_email: userEmail,
+				to_name: userName,
+				items_list: items,
+			},
+			"T-VQxrMdcr_OdDWSa"
+		);
+		console.log("Email sent successfully!");
+	} catch (error) {
+		console.error("Error sending email:", error);
+	}
+}
+
 function Payment() {
 	let cType = localStorage.getItem("cType");
 
@@ -177,89 +264,47 @@ function Payment() {
 
 	let card = document.getElementById("cc").value;
 
-	function removeAllSpaces(str) {
-		return str.replace(/\s|&nbsp;/g, "");
-	}
-
 	card = removeAllSpaces(card);
-
-	function isUnsignedNumeric(value) {
-		for (let i = 0; i < value.length; i++) {
-			const charCode = value.charCodeAt(i);
-			if (charCode < 48 || charCode > 57) {
-				return false; // Not a digit (0-9)
-			}
-		}
-		return true;
-	}
 
 	if (isUnsignedNumeric(cvvNumber) && cvvNumber.length >= 3) localStorage.setItem("cvv_full", "1");
 	else localStorage.setItem("cvv_full", "0");
 
 	let cvv_full = localStorage.getItem("cvv_full");
 
-	function glassmorphicAlert(message, options = {}) {
-		const {
-			duration = 5000,
-			backgroundColor = "rgba(108, 68, 35, 0.86)",
-			textColor = "#fff8e1",
-			blurRadius = "10px",
-			borderRadius = "10px",
-			width = "300px",
-			padding = "20px",
-			boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)",
-			fontFamily = "sans-serif",
-			fontSize = "16px",
-		} = options;
+	if (localStorage.getItem("account_log") === "true") {
+		if (cType === "Unknown") glassmorphicAlert("You need to enter a valid form of payment! For example a Visa card.");
+		else if (card.length !== 16 && card.length !== 15 && cType !== "American Express")
+			glassmorphicAlert(
+				"You need to enter a card number formed of 16 digits or 15 digits if it is an American Express card!"
+			);
+		else if (cvv_full === "0")
+			glassmorphicAlert("Your CVV code should be formed of 3 digits or 4 if it is an American Express card!");
+		else {
+			localStorage.setItem("currentSum", "0");
+			localStorage.setItem("account_log", "false");
 
-		const alertContainer = document.createElement("div");
-		alertContainer.style.position = "fixed";
-		alertContainer.style.zIndex = "9999";
-		alertContainer.style.top = "20px";
-		alertContainer.style.left = "50%";
-		alertContainer.style.transform = "translateX(-50%)";
+			glassmorphicAlert(
+				"Your " +
+					cType +
+					" card will be charged " +
+					payment +
+					" RON, and the package will be delivered as soon as posible!"
+			);
 
-		const alertBox = document.createElement("div");
-		alertBox.style.backgroundColor = backgroundColor;
-		alertBox.style.backdropFilter = `blur(${blurRadius})`;
-		alertBox.style.webkitBackdropFilter = `blur(${blurRadius})`;
-		alertBox.style.color = textColor;
-		alertBox.style.borderRadius = borderRadius;
-		alertBox.style.width = width;
-		alertBox.style.padding = padding;
-		alertBox.style.boxShadow = boxShadow;
-		alertBox.style.fontFamily = fontFamily;
-		alertBox.style.fontSize = fontSize;
-		alertBox.style.textAlign = "center";
-		alertBox.innerHTML = message;
+			sendPaymentConfirmationEmail();
 
-		alertContainer.appendChild(alertBox);
-		document.body.appendChild(alertContainer);
+			localStorage.removeItem("myItems");
 
-		setTimeout(() => {
-			alertContainer.remove();
-		}, duration);
-	}
-
-	if (cType === "Unknown") glassmorphicAlert("You need to enter a valid form of payment! For example a Visa card.");
-	else if (card.length !== 16 && card.length !== 15 && cType !== "American Express")
-		glassmorphicAlert("You need to enter a card number formed of 16 digits or 15 digits if it is an American Express card!");
-	else if (cvv_full === "0")
-		glassmorphicAlert("Your CVV code should be formed of 3 digits or 4 if it is an American Express card!");
-	else {
-		localStorage.setItem("currentSum", "0");
-		glassmorphicAlert(
-			"Your " + cType + " card will be charged " + payment + " RON, and the package will be delivered as soon as posible!"
-		);
-		setTimeout(function () {
-			window.location.href = './coffee.html';
-		}, 4800);
-	}
+			setTimeout(function () {
+				window.location.href = "./coffee.html";
+			}, 4300);
+		}
+	} else glassmorphicAlert("You need to log in or make an account with us first!");
 
 	localStorage.setItem("cNum_full", "0");
 	localStorage.setItem("cvv_full", "0");
 	localStorage.setItem("cType", "");
-	localStorage.removeItem("myItems");
+
 	setTimeout(function () {
 		window.location.reload();
 	}, 5000);
