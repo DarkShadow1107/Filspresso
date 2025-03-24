@@ -273,8 +273,10 @@ h3, h4 {
 	background-color: rgba(200, 151, 123, 0.153);
 	border-radius: 30px;
 }
-.box_coffee_type svg {
+.box_coffee_type img, svg {
 	margin-left: 10%;
+	margin-top: 10%;
+	scale: 1.2;
 }
 .text_coffee_made {
 	font-size: 12px;
